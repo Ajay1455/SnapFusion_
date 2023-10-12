@@ -9,6 +9,12 @@ function Login() {
     
   const navigate = useNavigate();
 
+    useEffect(() => {
+    gapi.load("client:auth2", () => {
+      gapi.auth2.init({ clientId: process.env.REACT_APP_GOOGLE_API_TOKEN });
+    });
+  }, []);
+
   const responseGoogle = (response) => {
     localStorage.setItem("user", JSON.stringify(response.profileObj));
 
