@@ -21,6 +21,12 @@ const UserProfile = () => {
   const User = localStorage.getItem('user') !== 'undefined' ? JSON.parse(localStorage.getItem('user')) : localStorage.clear();
 
   useEffect(() => {
+    gapi.load("client:auth2", () => {
+      gapi.auth2.init({ clientId: process.env.REACT_APP_GOOGLE_API_TOKEN });
+    });
+  }, []);
+  
+  useEffect(() => {
     const query = userQuery(userId);
     client.fetch(query).then((data) => {
       setUser(data[0]);
