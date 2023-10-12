@@ -2,7 +2,6 @@ import React, { useEffect, useState } from 'react';
 import { AiOutlineLogout } from 'react-icons/ai';
 import { useParams, useNavigate } from 'react-router-dom';
 import { GoogleLogout } from 'react-google-login';
-import { gapi } from "gapi-script";
 import { userCreatedPinsQuery, userQuery, userSavedPinsQuery } from '../utils/data';
 import { client } from '../client';
 import MasonryLayout from './MasonryLayout';
@@ -43,12 +42,6 @@ const UserProfile = () => {
       });
     }
   }, [text, userId]);
-
-  useEffect(() => {
-    gapi.load("client:auth2", () => {
-      gapi.auth2.init({ clientId: process.env.REACT_APP_GOOGLE_API_TOKEN });
-    });
-  }, []);
 
   const logout = () => {
     localStorage.clear();
