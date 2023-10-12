@@ -4,6 +4,7 @@ import { useNavigate } from "react-router-dom";
 import { FcGoogle } from "react-icons/fc";
 import shareVideo from "../assets/SnapFusion.mp4";
 import { client } from "../client";
+import { gapi } from "gapi-script";
 
 function Login() {
     
